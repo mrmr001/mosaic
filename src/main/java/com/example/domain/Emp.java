@@ -1,6 +1,7 @@
 package com.example.domain;
 
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -9,7 +10,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 public class Emp {
 
-	private int empno;
+	private Integer empno;
 	private String ename;
 	private String job;
 	private Integer mgr;
@@ -46,11 +47,11 @@ public class Emp {
 		return str;
 	}
 
-	public int getEmpno() {
+	public Integer getEmpno() {
 		return empno;
 	}
 
-	public void setEmpno(int empno) {
+	public void setEmpno(Integer empno) {
 		this.empno = empno;
 	}
 
@@ -110,4 +111,10 @@ public class Emp {
 		this.deptno = deptno;
 	}
 
+	public String getSimpleDate()
+	{
+		SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
+		return format.format(hiredate);
+	}
+	
 }

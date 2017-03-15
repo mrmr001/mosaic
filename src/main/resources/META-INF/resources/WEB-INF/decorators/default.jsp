@@ -22,7 +22,12 @@
 	<link rel="stylesheet" href="../code_assist/animate.css">
 	<link rel="stylesheet" href="../code_assist/bootstrap.css">
 </c:if>
-
+<style type="text/css">
+td {
+	text-transform: capitalize;
+	
+}
+</style>
 <sitemesh:write property="head"/>
 </head>
 <body>
@@ -43,9 +48,8 @@
 				<li class="dropdown">
 					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Employee<span class="caret"></span></a>
 					<ul class="dropdown-menu">
-						<li><a href="/dept/list">Dept</a></li>
-						<li><a href="/emp/list">Emp</a></li>
-						<li><a href="/emp/salgrade">Salgrade</a></li>
+						<li><a href="/dept/page/1">Dept</a></li>
+						<li><a href="/emp/page/1">Emp</a></li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -66,10 +70,11 @@
 		</div>
 	</div>
 </nav>
-
+<div class="container  text-center">
+<div class="table-responsive  text-center">
 <sitemesh:write property="body"/>
-
-
+</div>
+</div>
 
 </body>
 </html>

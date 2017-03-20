@@ -24,7 +24,7 @@
 	<%-- ${paging} --%>
 		<%-- 		<span>totallist=${paging.totalItem}</span> --%>
 
-		<table class="table table-responsive">
+		<table class="table table-hover">
 			<tr class="alert-info">
 				<td>deptno</td>
 				<td>ename</td>
@@ -36,9 +36,11 @@
 				<td>comm</td>
 			</tr>
 			<c:forEach var="e" items="${emp}">
-				<tr>
+				<tr onclick="location.href='/emp/item/${e.empno}?pageNo=${paging.pageNo}'"
+				style="cursor: pointer">
 					<td>${e.deptno}</td>
-					<td><a href="/emp/item/${e.empno}?pageNo=${paging.pageNo}">${e.ename}</td>
+<%-- 					<td><a href="/emp/item/${e.empno}?pageNo=${paging.pageNo}">${e.ename}</td> --%>
+					<td>${e.ename}</td>
 					<td>${e.empno}</td>
 					<td>${e.job}</td>
 					<td>${e.mgr}</td>

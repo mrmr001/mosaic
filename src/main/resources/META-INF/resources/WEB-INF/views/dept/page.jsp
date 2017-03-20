@@ -17,44 +17,26 @@
 
 	<c:set var="depts" value="${page.depts}" />
 	<c:set var="paging" value="${page.paging}" />
-
-	<%-- <h1>page list pageNo=${paging.pageNo}</h1> --%>
-
-	<%-- ${paging} --%>
-<%-- 	totallist=${paging.totalItem} --%>
-
-		<table class="table table-hover">
-			<tr class="alert-info">
-				<td>No.</td>
-				<td>Deptno</td>
-				<td>dname</td>
-				<td>loc</td>
+	
+	<table class="table table-hover">
+		<tr class="alert-info">
+		
+			<td>No.</td>
+			<td>Deptno</td>
+			<td>dname  &nbsp; &nbsp;<button class="btn btn-info btn-xs">추가</button></td>
+			<td>loc </td>
+		</tr>
+		
+		<c:forEach var="d" items="${depts}" varStatus="status">
+			<tr	onclick="location.href='/dept/item/${d.deptno}?pageNo=${paging.pageNo}'"
+				style="cursor: pointer">
+				
+				<td><b>${status.index +1}</b></td>
+				<td>${d.deptno}</td>
+				<td>${d.dname}</td>
+				<td>${d.loc}</td>
 			</tr>
-			<c:forEach var="d" items="${depts}" varStatus="status">
-				<tr>
-					<td><b>${status.index +1}</b></td>
-					<td>${d.deptno}</td>
-					<td><a href="/dept/item/${d.deptno}?pageNo=${paging.pageNo}">${d.dname}</a>
-					</td>
-					<td>${d.loc}</td>
-				</tr>
-			</c:forEach>
-		</table>
-
-
-<!-- 		<ul class="pagination"> -->
-<%-- 			<c:if test="${paging.firstPage != 1 }"> --%>
-<!-- 				<li class="previous"><a -->
-<%-- 					href="/dept/page/${paging.firstPage - 1 }">prev</a></li> --%>
-<%-- 			</c:if> --%>
-<%-- 			<c:forEach var="i" begin="${paging.firstPage}" --%>
-<%-- 				end="${paging.lastPage}"> --%>
-<%-- 				<li><a class="btn btn-default" href="/dept/page/${i}">${i} --%>
-<!-- 				</a></li> -->
-<%-- 			</c:forEach> --%>
-<%-- 			<c:if test="${paging.lastPage != 24 }"> --%>
-<%-- 				<li class="next"><a href="/dept/page/${paging.lastPage + 1 }">next</a></li> --%>
-<%-- 			</c:if> --%>
-<!-- 		</ul> -->
+		</c:forEach>
+	</table>
 </body>
 </html>

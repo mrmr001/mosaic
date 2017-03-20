@@ -10,9 +10,11 @@
 <title>DeptItem.jsp</title>
 </head>
 <body>
-	<div class="container text-center">
+	
 		<table class="table table-hover">
-			<tr class="alert-info">
+			<tr class="alert-info"
+				onclick="location.href='/dept/page/${param.pageNo}'"
+				style="cursor: pointer">
 				<td></td>
 				<td>deptno</td>
 				<td>dname</td>
@@ -27,8 +29,10 @@
 				<td>${dept.dname}</td>
 				<td>${dept.loc}</td>
 			</tr>
-
-			<tr class="alert-info">
+			<tr>
+				<td colspan="5"></td>
+			</tr>
+			<tr class="alert-success">
 				<td>no.</td>
 				<td>deptno</td>
 				<td>ename</td>
@@ -54,6 +58,6 @@
 				</tr>
 			</c:forEach>
 		</table>
-	</div>
+	
 </body>
 </html>

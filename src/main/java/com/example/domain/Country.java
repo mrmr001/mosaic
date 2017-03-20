@@ -1,6 +1,8 @@
 package com.example.domain;
 
 import java.math.BigDecimal;
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
@@ -103,7 +105,8 @@ public class Country {
 	public BigDecimal getPopulation() {
 		return population;
 	}
-
+	
+	
 	public void setPopulation(BigDecimal population) {
 		this.population = population;
 	}
@@ -172,4 +175,9 @@ public class Country {
 		this.code2 = code2;
 	}
 
+//	public String getSimpleDate()
+//	{
+//		SimpleDateFormat format = new SimpleDateFormat("YYYY/MM/dd");
+//		return format.format(hiredate);
+//	}
 }

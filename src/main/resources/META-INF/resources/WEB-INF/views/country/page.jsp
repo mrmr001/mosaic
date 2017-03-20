@@ -9,7 +9,6 @@
 <meta charset="UTF-8">
 <title>page.jsp</title>
 
-<!-- code_assist -->
 <c:if test="false">
 	<link rel="stylesheet" href="../code_assist/animate.css">
 	<link rel="stylesheet" href="../code_assist/bootstrap.css">
@@ -18,50 +17,58 @@
 </head>
 <body>
 
-	<c:set var="countrys" value="${page.countrys}" />
-	<c:set var="paging" value="${page.paging}" />
-
+	<c:set var="countrys" 	value="${page.countrys}" />
+	<c:set var="paging" 	value="${page.paging}" />
+	<div class="table-responsive">
 	<table class="table table-hover">
+		<!-- 	<table class="table table-hover table-bordered"> -->
 		<tr class="alert-info">
 			<td>No.</td>
 			<td>code</td>
-			<td>name</a></td>
+			<td>code2</td>
+			<td>name</td>
+			<td>localName</td>
 			<td>continent</td>
 			<td>region</td>
+			<td>governmentForm</td>
+			<td>headOfState</td>
 			<td>surfaceArea</td>
 			<td>indepYear</td>
 			<td>population</td>
 			<td>lifeExpectancy</td>
 			<td>gnp</td>
 			<td>gnpOld</td>
-			<td>localName</td>
-			<td>governmentForm</td>
-			<td>headOfState</td>
 			<td>capital</td>
-			<td>code2</td>
+			
 		</tr>
 		<c:forEach var="c" items="${countrys}" varStatus="status">
-			<tr  style="text-overflow: ellipsis">
-				<td><b>${status.index}</b></td>
+			<fmt:formatNumber value="${c.surfaceArea}" 	type="number" var="country_surfaceArea"/>
+			<fmt:formatNumber value="${c.population}" 	type="number" var="country_population"/>
+			<fmt:formatNumber value="${c.gnp}" 			type="number" var="country_gnp"/>
+			<fmt:formatNumber value="${c.gnpOld}" 		type="number" var="country_gnpOld"/>
+			<tr	onclick="location.href='/country/item/${c.code}?pageNo=${paging.pageNo}'"
+				style="cursor: pointer">
+				<td><b>${status.index +1}</b></td>
 				<td>${c.code}</td>
-				<td><a href="/country/item/${c.code}?pageNo=${paging.pageNo}">${c.name}</a></td>
+				<td>${c.code2}</td>
+				<td>${c.name}</td>
+				<td>${c.localName}</td>
 				<td>${c.continent}</td>
 				<td>${c.region}</td>
-				<td>${c.surfaceArea}</td>
-				<td>${c.indepYear}</td>
-				<td>${c.population}</td>
-				<td>${c.lifeExpectancy}</td>
-				<td>${c.gnp}</td>
-				<td>${c.gnpOld}</td>
-				<td>${c.localName}</td>
 				<td>${c.governmentForm}</td>
 				<td>${c.headOfState}</td>
+				<td>${country_surfaceArea}</td>
+				<td>${c.indepYear}</td>
+				<td>${country_population}</td>
+				<td>${c.lifeExpectancy}</td>
+				<td>${country_gnp}</td>
+				<td>${country_gnpOld}</td>
 				<td>${c.capital}</td>
-				<td>${c.code2}</td>
 			</tr>
 		</c:forEach>
 	</table>
-	<ul class="pagination">
+	</div>
+	<ul class="pagination ">
 		<c:if test="${paging.firstPage != 1 }">
 			<li><a href="/country/page/1">first</a></li>
 			<li><a href="/country/page/${paging.firstPage - 1}">Prev</a></li>
@@ -76,6 +83,5 @@
 			<li><a href="/country/page/${paging.totalPage}">last</a></li>
 		</c:if>
 	</ul>
-
 </body>
 </html>

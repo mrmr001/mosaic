@@ -22,7 +22,7 @@ public interface CountryMapper {
 	@Select({
 		"select *                             ",
 		"  from country                       ",
-		" order by name                       ",
+		" order by code                       ",
 		"offset #{firstItem} - 1 rows         ",
 		" fetch next #{itemsPerPage} rows only"
 	})

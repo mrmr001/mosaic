@@ -18,7 +18,9 @@
 <body>
 	<div class="container text-center">
 		<table class="table table-hover">
-			<tr class="alert-info">
+			<tr class="alert-info"
+			onclick="location.href='/emp/page/${param.pageNo}'"
+				style="cursor: pointer">
 				<td>deptno</td>
 				<td>ename</td>
 				<td>empno</td>
@@ -40,7 +42,10 @@
 				<td>${emp.getSimpleDate()}</td>
 				<td>${emp.comm}</td>
 			</tr>
-			<tr class="alert-info">
+			<tr>
+				<td colspan="9"></td>
+			</tr>
+			<tr class="alert-success">
 				<td>deptno</td>
 				<td>dname</td>
 				<td>loc</td>

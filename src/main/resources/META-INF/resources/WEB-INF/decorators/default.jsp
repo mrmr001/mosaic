@@ -79,8 +79,18 @@ tr td {
 					<li><a href="#">Documentation</a></li>
 				</ul>
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="#"><span class="glyphicon glyphicon-user"></span>SignUp</a></li>
-					<li><a href="#"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+				<%
+					String name = (String)session.getAttribute("id");
+					if(name !=null){
+					out.println("환영! "+name+" 님");
+					out.println("<a href='logout'>로그아웃</a>");
+					}else{
+						%>
+					<li><a href="login"><span class="glyphicon glyphicon-log-in"></span>Login</a></li>
+<!-- 					out.println("<a href='login'>로그인</a>"); -->
+				<%
+					}
+				%>
 				</ul>
 			</div>
 		</div>

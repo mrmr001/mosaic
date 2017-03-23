@@ -25,6 +25,17 @@
 
 </head>
 <body>
-<c:redirect url="/memo/list"/>
+<form action="/login" method="post">
+    <input type="text" name="id"/>
+    <input type="password" name="password"/>
+    <input type="submit" value="전송" />
+</form>
+관리자 아이디 : ${sessionScope.admin.admin_id }<br/>
+관리자 이름: ${sessionScope.admin.admin_name }
+
+
+
+
+
 </body>
 </html>

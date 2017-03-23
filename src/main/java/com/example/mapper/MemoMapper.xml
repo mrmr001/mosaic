@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mapper.MemoMapper">
+
+<resultMap type="com.example.domain.NameSe" id="withmemo">
+		<id 	property="memoId" 		column="name_se_memoId"/>
+		<result property="memoName"		column="name_se_memoName"/>
+   <association property="memo" 		javaType="com.example.domain.Memo">
+		<id 	property="memoId" 		column="memo_memoId"/>
+	 	<result property="memoNo"		column="memo_memoNo"/>
+	 	<result property="memoX"		column="memo_memoX"/>
+	 	<result property="memoY"		column="memo_memoY"/>
+	 	<result property="content"		column="memo_content"/>
+	 	<result property="memoDate"		column="memo_memoDate"/>
+	</association>
+</resultMap>
+<resultMap type="com.example.domain.Memo" id="select">
+		<id 	property="memoId" 		column="memo_memoId"/>
+	 	<result property="memoNo"		column="memo_memoNo"/>
+	 	<result property="memoX"		column="memo_memoX"/>
+	 	<result property="memoY"		column="memo_memoY"/>
+	 	<result property="content"		column="memo_content"/>
+	 	<result property="memoDate"		column="memo_memoDate"/>
+
+</resultMap>
+<select id="selectAllWithId" resultMap="withmemo">
+		select	n.memo_Id    	as	name_se_memoId,
+				n.memo_Name		as	name_se_memoName,
+	 			m.memo_Id		as	memo_memoId,
+	 			m.memo_No		as	memo_memoNo,
+	 			m.memo_X		as	memo_memoX,
+	 			m.memo_Y		as	memo_memoY,
+	 			m.content		as	memo_content,
+	 			m.memo_Date		as	memo_memoDate
+		from name_se n left outer join memo m
+		on m.memo_id = n.memo_id	
+</select>
+<select id="selectAll" resultMap="select">
+		select m.memo_id		as	memo_memoId,
+	 			m.memo_no		as	memo_memoNo,
+	 			m.memo_x		as	memo_memoX,
+	 			m.memo_y		as	memo_memoY,
+	 			m.content		as	memo_content,
+	 			m.memo_date		as	memo_memoDate
+	 	from memo m
+		</select>
+
+<!-- <select id="selectPageWithCountry" resultMap="cityWithCountry"> -->
+<!-- 	select 	c1.id				as city_id, -->
+<!-- 			c1.name				as city_name, -->
+<!-- 			c1.country_code		as city_country_code, -->
+<!-- 			c1.district			as city_district, -->
+<!-- 			c1.population		as city_population, -->
+<!-- 			c2.code				as country_code, -->
+<!-- 			c2.name				as country_name, -->
+<!-- 			c2.continent		as country_continent, -->
+<!-- 			c2.region			as country_region, -->
+<!-- 			c2.surface_area		as country_surface_area, -->
+<!-- 			c2.indep_year		as country_indep_year, -->
+<!-- 			c2.population		as country_population, -->
+<!-- 			c2.life_expectancy	as country_life_expectancy, -->
+<!-- 			c2.gnp				as country_gnp, -->
+<!-- 			c2.gnp_old			as country_gnp_old, -->
+<!-- 			c2.local_name		as country_local_name, -->
+<!-- 			c2.government_form	as country_government_form, -->
+<!-- 			c2.head_of_state	as country_head_of_state, -->
+<!-- 			c2.capital			as country_capital, -->
+<!-- 			c2.code2			as country_code2 -->
+<!-- 	  from city c1 left outer join country c2 -->
+<!-- 	    on c1.country_code = c2.code -->
+<!-- 	offset #{firstItem} - 1 rows -->
+<!-- 	 fetch next #{itemsPerPage} rows only   -->
+<!-- </select> -->
+
+
+<!-- <select id="selectByIdWithCountry" resultMap="cityWithCountry"> -->
+<!-- 	select 	c1.id				as city_id, -->
+<!-- 			c1.name				as city_name, -->
+<!-- 			c1.country_code		as city_country_code, -->
+<!-- 			c1.district			as city_district, -->
+<!-- 			c1.population		as city_population, -->
+<!-- 			c2.code				as country_code, -->
+<!-- 			c2.name				as country_name, -->
+<!-- 			c2.continent		as country_continent, -->
+<!-- 			c2.region			as country_region, -->
+<!-- 			c2.surface_area		as country_surface_area, -->
+<!-- 			c2.indep_year		as country_indep_year, -->
+<!-- 			c2.population		as country_population, -->
+<!-- 			c2.life_expectancy	as country_life_expectancy, -->
+<!-- 			c2.gnp				as country_gnp, -->
+<!-- 			c2.gnp_old			as country_gnp_old, -->
+<!-- 			c2.local_name		as country_local_name, -->
+<!-- 			c2.government_form	as country_government_form, -->
+<!-- 			c2.head_of_state	as country_head_of_state, -->
+<!-- 			c2.capital			as country_capital, -->
+<!-- 			c2.code2			as country_code2 -->
+<!-- 	  from city c1 left outer join country c2 -->
+<!-- 	    on c1.country_code = c2.code -->
+<!-- 	 where c1.id = #{id} -->
+<!-- </select> -->
+
+<!-- <insert id="insert"> -->
+<!-- 	<selectKey keyProperty="id" keyColumn="id" resultType="int" order="BEFORE"> -->
+<!-- 		select city_id_seq.nextval from dual -->
+<!-- 	</selectKey> -->
+<!-- 	insert into city -->
+<!-- 	( -->
+<!-- 		id, -->
+<!-- 		name, -->
+<!-- 		country_code, -->
+<!-- 		district, -->
+<!-- 		population -->
+<!-- 	) -->
+<!-- 	values -->
+<!-- 	( -->
+<!-- 		#{id}, -->
+<!-- 		#{name}, -->
+<!-- 		#{countryCode}, -->
+<!-- 		#{district}, -->
+<!-- 		#{population} -->
+<!-- 	) -->
+<!-- </insert> -->
+
+<!-- <update id="updateById"> -->
+
+<!-- </update> -->
+
+
+
+
+
+</mapper>
